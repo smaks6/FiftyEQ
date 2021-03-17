@@ -1,0 +1,5 @@
+name: FiftyEQ
+version: ${project.version}
+main: me.smaks6.fiftyeq.FiftyEQ
+api-version: 1.16
+authors: [ smaks6 ]
