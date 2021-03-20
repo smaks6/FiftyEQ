@@ -14,20 +14,14 @@ public class DeathEvent implements Listener {
     @EventHandler
     public void deathEvent(PlayerDeathEvent event){
         Player player = event.getEntity();
-
         event.setKeepInventory(true);
-
         ArrayList<ItemStack> dropItems = getList(player);
-
         dropItems = random(dropItems);
-
+        event.getDrops().clear();
+        event.getDrops().addAll(dropItems);
         removeItem(dropItems, player);
-
-        dropItem(dropItems, player);
-
     }
-
-
+    
     private ArrayList<ItemStack> random(ArrayList<ItemStack> dropItems){
 
         int lenght = (dropItems.size() -1) / 2;
@@ -53,17 +47,6 @@ public class DeathEvent implements Listener {
             player.getInventory().removeItem(itemStack);
         }
 
-
-    }
-
-    private void dropItem(ArrayList<ItemStack> dropitem, Player player){
-        for (ItemStack itemStack : dropitem) {
-
-            if((itemStack == null))
-                continue;
-
-            player.getWorld().dropItemNaturally(player.getLocation(), itemStack);
-        }
 
     }
 
