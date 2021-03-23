@@ -1,26 +1,31 @@
 package me.smaks6.fiftyeq;
 
-import me.smaks6.fiftyeq.events.DeathEvent;
-import org.bukkit.ChatColor;
+import me.smaks6.fiftyeq.listener.PlayerDeathListener;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Logger;
 
 public final class FiftyEQ extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println(ChatColor.GREEN + "=============================");
-        System.out.println(ChatColor.GREEN + "       Enabling FiftyEQ");
-        System.out.println(ChatColor.GREEN + "           by smaks6");
-        System.out.println(ChatColor.GREEN + "=============================");
+        Logger logger = this.getLogger();
+        logger.info("=============================");
+        logger.info("       Enabling FiftyEQ");
+        logger.info("           by smaks6");
+        logger.info("=============================");
 
-        getServer().getPluginManager().registerEvents(new DeathEvent(), this);
+        PluginManager pluginManager = getServer().getPluginManager();
+        pluginManager.registerEvents(new PlayerDeathListener(), this);
     }
 
     @Override
     public void onDisable() {
-        System.out.println(ChatColor.GREEN + "=============================");
-        System.out.println(ChatColor.GREEN + "       Disabling FiftyEQ");
-        System.out.println(ChatColor.GREEN + "           by smaks6");
-        System.out.println(ChatColor.GREEN + "=============================");
+        Logger logger = this.getLogger();
+        logger.info("=============================");
+        logger.info("       Disabling FiftyEQ");
+        logger.info("           by smaks6");
+        logger.info("=============================");
     }
 }
